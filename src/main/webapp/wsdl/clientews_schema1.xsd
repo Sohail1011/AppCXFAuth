@@ -1,0 +1,28 @@
+<xs:schema xmlns:tns="http://ws.company.pe/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://ws.company.pe/" version="1.0">
+
+  <xs:element name="listarClientes" type="tns:listarClientes"/>
+
+  <xs:element name="listarClientesResponse" type="tns:listarClientesResponse"/>
+
+  <xs:complexType name="listarClientes">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listarClientesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:cliente"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cliente">
+    <xs:sequence>
+      <xs:element name="credito" type="xs:double"/>
+      <xs:element minOccurs="0" name="empresa" type="xs:string"/>
+      <xs:element name="id_cliente" type="xs:int"/>
+      <xs:element minOccurs="0" name="vendedor" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

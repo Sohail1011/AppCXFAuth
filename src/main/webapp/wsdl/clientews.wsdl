@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ClienteWSService" targetNamespace="http://ws.company.pe/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.company.pe/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://ws.company.pe/" schemaLocation="clientews_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="listarClientes">
+    <wsdl:part name="parameters" element="tns:listarClientes">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listarClientesResponse">
+    <wsdl:part name="parameters" element="tns:listarClientesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ClienteWSInterface">
+    <wsdl:operation name="listarClientes">
+      <wsdl:input name="listarClientes" message="tns:listarClientes">
+    </wsdl:input>
+      <wsdl:output name="listarClientesResponse" message="tns:listarClientesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClienteWSServiceSoapBinding" type="tns:ClienteWSInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="listarClientes">
+      <soap:operation soapAction="urn:ListarClientes" style="document"/>
+      <wsdl:input name="listarClientes">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listarClientesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClienteWSService">
+    <wsdl:port name="ClienteWSPort" binding="tns:ClienteWSServiceSoapBinding">
+      <soap:address location="http://localhost:8080/AppWebAuth/services/ClienteWSPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
